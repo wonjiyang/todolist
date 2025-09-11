@@ -1,21 +1,12 @@
-//유저가 값을 입력한다
-//+버튼을 클릭하면, 할 일이 추가된다
-//Delete버튼을 클릭하면, 할 일이 삭제된다
-//Check버튼을 클릭하면, 할 일이 끝나면서 밑줄이 간다
-//진행중 끝 탭을 클릭하면, 언더바가 이동한다
-//끝 탭은 끝난 아이템만, 진행중 탭은 진행중인 아이템만
-//전체 탭을 누르면 다시 전체 아이템으로 돌아온다
-
 let taskInput = document.getElementById('task-input');
 let addBtn = document.getElementById('add-btn');
+let tabs = document.querySelectorAll('.filter-nav button');
 let underLine = document.getElementById('under-line');
-let tabs = document.querySelectorAll('.input-box ');
 let taskList = [];
 let mode = 'all';
 let filterList = [];
 
 addBtn.addEventListener('click', addTask);
-tabs.forEach((menu) => menu.addEventListener('click', (e) => indicator(e)));
 taskInput.addEventListener('focus', function () {
   taskInput.value = '';
 });
@@ -24,15 +15,23 @@ taskInput.addEventListener('keydown', function (event) {
     addTask(event);
   }
 });
-taskInput.addEventListener('');
+tabs.forEach((menu) => menu.addEventListener('click', (e) => indicator(e)));
 
-for (let i = 1; i < tabs.length; i++) {
+for (let i = 0; i < tabs.length; i++) {
   tabs[i].addEventListener('click', function (event) {
     filter(event);
   });
 }
 
+function indicator(e) {
+  underLine.style.left = e.currentTarget.offsetLeft + 'px';
+  underLine.style.width = e.currentTarget.offsetWidth + 'px';
+  underLine.style.top =
+    e.currentTarget.offsetTop + e.currentTarget.offsetHeight + 'px';
+}
+
 function addTask() {
+  event.preventDefault();
   if (taskInput.value == '') {
     Swal.fire({
       icon: 'info',
@@ -45,7 +44,6 @@ function addTask() {
         confirmButton: 'add-confirm',
       },
     });
-    event.preventDefault();
   }
   let task = {
     id: randomIDGenerate(),
@@ -61,49 +59,42 @@ function render() {
   let list = [];
   if (mode === 'all') {
     list = taskList;
-  } else if (mode === 'ongoing' || mode === 'done') {
+  } else if (mode === 'active' || mode === 'done') {
     list = filterList;
   }
   let resultHTML = '';
   for (let i = 0; i < list.length; i++) {
     if (list[i].isComplete == true) {
-      resultHTML += `<div class="task">
-            <div class="task-done">${list[i].taskContent}</div>
-            <div class="btn-area">
-              <button class="btn-style rotate-btn" onclick="toggleComplete('${list[i].id}')"><i class="fa-solid fa-rotate-right"></i></button>
-              <button class="btn-style delete-btn" onclick="deleteTask('${list[i].id}')"><i class="fa-solid fa-delete-left"></i></button>
-            </div>
-          </div>`;
+      resultHTML += `<li class="list-content">
+        <div class="list-area">
+        <button class="check-btn" onclick="toggleComplete('${list[i].id}')">
+        <i class="fa-solid fa-circle-check"></i></button>
+        <div class="task-done">${list[i].taskContent}</div>
+        </div>
+        <button class="delete-btn" onclick="deleteTask('${list[i].id}')"><i class="fa-solid fa-trash "></i></button>
+        </li>`;
     } else {
-      resultHTML += `<div class="task">
-              <div>${list[i].taskContent}</div>
-              <div class="btn-area">
-                <button class="btn-style click-btn" onclick="toggleComplete('${list[i].id}')"><i class="fa-solid fa-circle-check"></i></button>
-                <button class="btn-style delete-btn" onclick="deleteTask('${list[i].id}')"><i class="fa-solid fa-delete-left"></i></button>
-              </div>
-            </div>`;
+      resultHTML += `<li class="list-content">
+        <div class="list-area">
+        <button class="check-btn" onclick="toggleComplete('${list[i].id}')">
+        <i class="fa-regular fa-circle" ></i></button>
+        <div>${list[i].taskContent}</div>
+        </div>
+        <button class="delete-btn" onclick="deleteTask('${list[i].id}')"><i class="fa-solid fa-trash"></i></button>
+        </li>`;
     }
   }
   document.getElementById('task-board').innerHTML = resultHTML;
-}
-
-function indicator(e) {
-  underLine.style.left = e.currentTarget.offsetLeft + 'px';
-  underLine.style.width = e.currentTarget.offsetWidth + 'px';
-  underLine.style.top =
-    e.currentTarget.offsetTop + e.currentTarget.offsetHeight + 'px';
 }
 
 function toggleComplete(id) {
   for (let i = 0; i < taskList.length; i++) {
     if (taskList[i].id == id) {
       taskList[i].isComplete = !taskList[i].isComplete;
-
       break;
     }
   }
   render();
-  console.log(taskList);
 }
 
 function deleteTask(id) {
@@ -114,7 +105,6 @@ function deleteTask(id) {
     }
   }
   render();
-  console.log(taskList);
 }
 
 function filter(event) {
@@ -122,7 +112,7 @@ function filter(event) {
   filterList = [];
   if (mode === 'all') {
     render();
-  } else if (mode === 'ongoing') {
+  } else if (mode === 'active') {
     for (let i = 0; i < taskList.length; i++) {
       if (taskList[i].isComplete === false) {
         filterList.push(taskList[i]);

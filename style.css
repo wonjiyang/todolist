@@ -98,7 +98,7 @@ main h1 {
   font-family: 'Inter-Semibold', Arial, Helvetica, sans-serif;
   font-weight: 800;
   font-size: 40px;
-  color: rgb(121, 32, 133);
+  color: #792085;
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
@@ -213,13 +213,14 @@ input::placeholder {
   justify-content: flex-start;
 }
 
-#under-line {
+.line {
   height: 4px;
-  background-color: #9660ba;
+  background-color: #792085;
+  border-radius: 5px;
   position: absolute;
-  width: 0 !important;
-  left: 0 !important;
-  top: 0 !important;
+  width: 0px;
+  left: 0px;
+  top: 0px;
   padding: 0;
   transition: 0.5s;
 }
@@ -227,7 +228,7 @@ input::placeholder {
 .nav-btn {
   border: none;
   border-radius: 12px;
-  padding: 20px 24px;
+  padding: 20px 24px 13px 24px;
   background-color: #fff;
   color: #4c4c4c;
   font-family: 'Inter-Semibold', Arial, Helvetica, sans-serif;
@@ -239,6 +240,41 @@ input::placeholder {
 .done-btn {
   font-weight: 400;
   color: #a6a6a6;
+}
+
+.list-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+}
+
+li {
+  list-style: none;
+}
+
+.list-area {
+  display: flex;
+  align-items: center;
+}
+
+.check-btn {
+  color: #cc97d4;
+  background-color: #fff;
+  padding: 20px 24px 20px 4px;
+  border: none;
+}
+
+.task-done {
+  text-decoration: line-through;
+  color: #c3c3c3;
+  font-weight: 100;
+}
+
+.delete-btn {
+  color: #707070;
+  background-color: #fff;
+  border: none;
 }
 
 .clear-box {

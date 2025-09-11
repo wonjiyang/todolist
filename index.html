@@ -10,10 +10,6 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
-    <script
-      src="https://kit.fontawesome.com/1811bd825e.js"
-      crossorigin="anonymous"
-    ></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -36,13 +32,13 @@
       </section>
     </div>
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"
     ></script>
     <script src="/main.js"></script>
   </body>
-</html> -->
+  </html> -->
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -73,16 +69,16 @@
           id="add-btn"
           class="add-Btn"
           aria-label="Add Task"
-          onclick="addAlert"
         >
           <span class="add-text">Add</span>
         </button>
       </form>
       <section class="list-box" role="region" aria-label="Task list">
         <nav class="filter-nav" role="tablist" aria-label="Filter tasks">
-          <span id="under-line" class="line"></span>
+          <div id="under-line" class="line"></div>
           <button
             type="button"
+            id="al"
             class="nav-btn all-btn"
             role="tab"
             aria-selected="true"
@@ -93,6 +89,7 @@
           </button>
           <button
             type="button"
+            id="active"
             class="nav-btn active-btn"
             role="tab"
             aria-selected="false"
@@ -103,6 +100,7 @@
           </button>
           <button
             type="button"
+            id="done"
             class="nav-btn done-btn"
             role="tab"
             aria-selected="false"
@@ -112,12 +110,16 @@
             Done
           </button>
         </nav>
-        <div class="task-list"></div>
+        <ui id="task-board"></ui>
       </section>
       <button type="button" class="clear-box" aria-label="Clear all tasks">
         <span class="clear-btn">Clear all</span>
       </button>
     </main>
+    <script
+      src="https://kit.fontawesome.com/1811bd825e.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="main.js"></script>
   </body>
