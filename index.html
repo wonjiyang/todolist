@@ -50,6 +50,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ToDoList</title>
+    <link rel="stylesheet" href="sweetalert2.min.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -67,13 +68,19 @@
           placeholder="Add new task"
           class="task-input"
         />
-        <button type="submit" class="add-Btn" aria-label="Add Task">
+        <button
+          type="submit"
+          id="add-btn"
+          class="add-Btn"
+          aria-label="Add Task"
+          onclick="addAlert"
+        >
           <span class="add-text">Add</span>
         </button>
       </form>
       <section class="list-box" role="region" aria-label="Task list">
         <nav class="filter-nav" role="tablist" aria-label="Filter tasks">
-          <span class="under-line"></span>
+          <span id="under-line" class="line"></span>
           <button
             type="button"
             class="nav-btn all-btn"
@@ -111,6 +118,7 @@
         <span class="clear-btn">Clear all</span>
       </button>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="main.js"></script>
   </body>
 </html>

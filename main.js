@@ -9,7 +9,7 @@
 let taskInput = document.getElementById('task-input');
 let addBtn = document.getElementById('add-btn');
 let underLine = document.getElementById('under-line');
-let tabs = document.querySelectorAll('.task-tabs div');
+let tabs = document.querySelectorAll('.input-box ');
 let taskList = [];
 let mode = 'all';
 let filterList = [];
@@ -34,8 +34,18 @@ for (let i = 1; i < tabs.length; i++) {
 
 function addTask() {
   if (taskInput.value == '') {
-    alert('값을 입력해주세요');
-    return;
+    Swal.fire({
+      icon: 'info',
+      text: '내용을 입력해주세요',
+      customClass: {
+        popup: 'add-popup',
+        icon: 'add-icon',
+        text: 'add-txt',
+        confirmButtonText: 'X',
+        confirmButton: 'add-confirm',
+      },
+    });
+    event.preventDefault();
   }
   let task = {
     id: randomIDGenerate(),
