@@ -214,6 +214,7 @@ input::placeholder {
   margin-bottom: 20px;
   position: relative;
   gap: 20px;
+  padding-left: 10px;
 }
 
 .line {
