@@ -31,7 +31,7 @@ function indicator(e) {
 
   underLine.style.left = tab.offsetLeft + 'px'; // 탭의 왼쪽 위치
   underLine.style.width = tab.offsetWidth + 'px'; // 탭의 너비
-  underLine.style.top = tab.offsetTop + tab.offsetHeight + 'px'; // 탭의 아래쪽으로 이동
+  underLine.style.top = tab.offsetTop + tab.offsetHeight + 'px'; // 탭 바로 아래로 위치
 }
 
 // 화면 크기 조정 시 탭의 위치 및 밑줄 위치 업데이트
@@ -164,5 +164,5 @@ window.addEventListener('DOMContentLoaded', function () {
   setTimeout(() => {
     indicator({ currentTarget: firstTab }); // 첫 번째 탭에 대한 indicator 함수 실행
     activateTab({ target: firstTab }); // 첫 번째 탭을 활성화
-  }, 10); // 약간의 지연을 줘서 첫 번째 탭에서 'line'을 확인하게 함
+  }, 1); // 약간의 지연을 줘서 첫 번째 탭에서 'line'을 확인하게 함
 });

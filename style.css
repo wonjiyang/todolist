@@ -212,6 +212,8 @@ input::placeholder {
   display: flex;
   justify-content: flex-start;
   margin-bottom: 20px;
+  position: relative;
+  gap: 20px;
 }
 
 .line {
@@ -229,7 +231,7 @@ input::placeholder {
 .nav-btn {
   border: none;
   border-radius: 12px;
-  padding: 20px 24px 10px 24px;
+  padding: 20px 10px 10px 10px;
   background-color: #fff;
   font-family: 'Inter-Semibold', Arial, Helvetica, sans-serif;
   font-size: 16px;
