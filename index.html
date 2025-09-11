@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -27,10 +27,10 @@
       </section>
       <section class="task-area">
         <div class="task-tabs">
-          <div id="under-line"></div>
-          <div class="">모두</div>
-          <div class="">진행중</div>
-          <div class="">끝</div>
+          <span id="under-line"></span>
+          <div id="all">모두</div>
+          <div id="ongoing">진행중</div>
+          <div id="done">끝</div>
         </div>
         <div id="task-board"></div>
       </section>
@@ -41,5 +41,76 @@
       crossorigin="anonymous"
     ></script>
     <script src="/main.js"></script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDoList</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <section class="head">
+        <header>
+          <h1>To Do List</h1>
+        </header>
+      </section>
+      <form class="input-box" aria-label="Add new task">
+        <input
+          type="text"
+          name="task"
+          id="task-input"
+          placeholder="Add new task"
+          class="task-input"
+        />
+        <button type="submit" class="add-Btn" aria-label="Add Task">
+          <span class="add-text">Add</span>
+        </button>
+      </form>
+      <section class="list-box" role="region" aria-label="Task list">
+        <nav class="filter-nav" role="tablist" aria-label="Filter tasks">
+          <span class="under-line"></span>
+          <button
+            type="button"
+            class="nav-btn all-btn"
+            role="tab"
+            aria-selected="true"
+            aria-controls="task-list"
+            data-filter="All"
+          >
+            All
+          </button>
+          <button
+            type="button"
+            class="nav-btn active-btn"
+            role="tab"
+            aria-selected="false"
+            aria-controls="task-list"
+            data-filter="All"
+          >
+            Active
+          </button>
+          <button
+            type="button"
+            class="nav-btn done-btn"
+            role="tab"
+            aria-selected="false"
+            aria-controls="task-list"
+            data-filter="All"
+          >
+            Done
+          </button>
+        </nav>
+        <div class="task-list"></div>
+      </section>
+      <button type="button" class="clear-box" aria-label="Clear all tasks">
+        <span class="clear-btn">Clear all</span>
+      </button>
+    </main>
+    <script src="main.js"></script>
   </body>
 </html>
