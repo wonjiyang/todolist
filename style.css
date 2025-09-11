@@ -138,9 +138,9 @@ input::placeholder {
 .add-Btn {
   position: absolute;
   width: 15%;
-  height: 50px;
   top: 0;
   right: 0;
+  height: 44px;
   font-family: 'Inter-Semibold', Arial, Helvetica, sans-serif;
   font-weight: 600;
   font-size: 15px;
@@ -319,5 +319,11 @@ li {
 
   .add-confirm {
     margin-left: 90px;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .add-Btn {
+    height: 50px;
   }
 }
