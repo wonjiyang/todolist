@@ -63,6 +63,7 @@
           id="task-input"
           placeholder="Add new task"
           class="task-input"
+          autofocus
         />
         <button
           type="submit"
@@ -78,12 +79,11 @@
           <div id="under-line" class="line"></div>
           <button
             type="button"
-            id="al"
+            id="all"
             class="nav-btn all-btn"
             role="tab"
             aria-selected="true"
             aria-controls="task-list"
-            data-filter="All"
           >
             All
           </button>
@@ -94,7 +94,6 @@
             role="tab"
             aria-selected="false"
             aria-controls="task-list"
-            data-filter="All"
           >
             Active
           </button>
@@ -105,14 +104,18 @@
             role="tab"
             aria-selected="false"
             aria-controls="task-list"
-            data-filter="All"
           >
             Done
           </button>
         </nav>
         <ui id="task-board"></ui>
       </section>
-      <button type="button" class="clear-box" aria-label="Clear all tasks">
+      <button
+        type="button"
+        id="clear-btn"
+        class="clear-box"
+        aria-label="Clear all tasks"
+      >
         <span class="clear-btn">Clear all</span>
       </button>
     </main>

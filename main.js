@@ -2,9 +2,9 @@ let taskInput = document.getElementById('task-input');
 let addBtn = document.getElementById('add-btn');
 let tabs = document.querySelectorAll('.filter-nav button');
 let underLine = document.getElementById('under-line');
+let clearBtn = document.getElementById('clear-btn');
 let taskList = [];
-let mode = 'all';
-let filterList = [];
+let mode = 'all'; // 기본적으로 'all' 탭 활성화
 
 addBtn.addEventListener('click', addTask);
 taskInput.addEventListener('focus', function () {
@@ -16,6 +16,7 @@ taskInput.addEventListener('keydown', function (event) {
   }
 });
 tabs.forEach((menu) => menu.addEventListener('click', (e) => indicator(e)));
+clearBtn.addEventListener('click', clearTask);
 
 for (let i = 0; i < tabs.length; i++) {
   tabs[i].addEventListener('click', function (event) {
@@ -23,13 +24,16 @@ for (let i = 0; i < tabs.length; i++) {
   });
 }
 
+// 탭 클릭 시, 밑줄 애니메이션 효과
 function indicator(e) {
+  // 탭 아래에 위치하도록 top 값 조정
   underLine.style.left = e.currentTarget.offsetLeft + 'px';
   underLine.style.width = e.currentTarget.offsetWidth + 'px';
   underLine.style.top =
-    e.currentTarget.offsetTop + e.currentTarget.offsetHeight + 'px';
+    e.currentTarget.offsetTop + e.currentTarget.offsetHeight + 'px'; // 탭 아래로 이동
 }
 
+// 할 일 추가
 function addTask() {
   event.preventDefault();
   if (taskInput.value == '') {
@@ -44,6 +48,7 @@ function addTask() {
         confirmButton: 'add-confirm',
       },
     });
+    return false;
   }
   let task = {
     id: randomIDGenerate(),
@@ -51,17 +56,27 @@ function addTask() {
     isComplete: false,
   };
   taskList.push(task);
-  console.log(taskList);
+  taskInput.value = null;
   render();
 }
 
+// 할 일 전체 삭제
+function clearTask() {
+  taskList = [];
+  render();
+}
+
+// 할 일 목록 렌더링
 function render() {
   let list = [];
   if (mode === 'all') {
     list = taskList;
-  } else if (mode === 'active' || mode === 'done') {
-    list = filterList;
+  } else if (mode === 'active') {
+    list = taskList.filter((task) => !task.isComplete);
+  } else if (mode === 'done') {
+    list = taskList.filter((task) => task.isComplete);
   }
+
   let resultHTML = '';
   for (let i = 0; i < list.length; i++) {
     if (list[i].isComplete == true) {
@@ -69,7 +84,7 @@ function render() {
         <div class="list-area">
         <button class="check-btn" onclick="toggleComplete('${list[i].id}')">
         <i class="fa-solid fa-circle-check"></i></button>
-        <div class="task-done">${list[i].taskContent}</div>
+        <div class="task-list task-done">${list[i].taskContent}</div>
         </div>
         <button class="delete-btn" onclick="deleteTask('${list[i].id}')"><i class="fa-solid fa-trash "></i></button>
         </li>`;
@@ -78,7 +93,7 @@ function render() {
         <div class="list-area">
         <button class="check-btn" onclick="toggleComplete('${list[i].id}')">
         <i class="fa-regular fa-circle" ></i></button>
-        <div>${list[i].taskContent}</div>
+        <div class="task-list">${list[i].taskContent}</div>
         </div>
         <button class="delete-btn" onclick="deleteTask('${list[i].id}')"><i class="fa-solid fa-trash"></i></button>
         </li>`;
@@ -87,6 +102,7 @@ function render() {
   document.getElementById('task-board').innerHTML = resultHTML;
 }
 
+// 완료 상태 토글
 function toggleComplete(id) {
   for (let i = 0; i < taskList.length; i++) {
     if (taskList[i].id == id) {
@@ -97,38 +113,25 @@ function toggleComplete(id) {
   render();
 }
 
+// 할 일 삭제
 function deleteTask(id) {
-  for (let i = 0; i < taskList.length; i++) {
-    if (taskList[i].id == id) {
-      taskList.splice(i, 1);
-      break;
-    }
-  }
+  taskList = taskList.filter((task) => task.id !== id);
   render();
 }
 
+// 필터링 처리
 function filter(event) {
-  mode = event.target.id;
-  filterList = [];
-  if (mode === 'all') {
-    render();
-  } else if (mode === 'active') {
-    for (let i = 0; i < taskList.length; i++) {
-      if (taskList[i].isComplete === false) {
-        filterList.push(taskList[i]);
-      }
-    }
-    render();
-  } else if (mode === 'done') {
-    for (let i = 0; i < taskList.length; i++) {
-      if (taskList[i].isComplete === true) {
-        filterList.push(taskList[i]);
-      }
-    }
-    render();
-  }
+  mode = event.target.id; // 클릭한 탭의 id 값으로 모드 변경
+  render(); // 변경된 모드로 리스트 렌더링
 }
 
+// 랜덤 ID 생성
 function randomIDGenerate() {
   return '_' + Math.random().toString(36).substring(2, 9);
 }
+
+// 페이지 로드 후 'all' 모드로 초기 렌더링
+window.addEventListener('DOMContentLoaded', function () {
+  mode = 'all'; // 기본 모드 'all'로 설정
+  render(); // 화면 렌더링
+});
