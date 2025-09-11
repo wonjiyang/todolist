@@ -21,17 +21,26 @@ clearBtn.addEventListener('click', clearTask);
 for (let i = 0; i < tabs.length; i++) {
   tabs[i].addEventListener('click', function (event) {
     filter(event);
+    activateTab(event); // 탭 클릭 시 해당 탭을 활성화
   });
 }
 
 // 탭 클릭 시, 밑줄 애니메이션 효과
 function indicator(e) {
-  // 탭 아래에 위치하도록 top 값 조정
-  underLine.style.left = e.currentTarget.offsetLeft + 'px';
-  underLine.style.width = e.currentTarget.offsetWidth + 'px';
-  underLine.style.top =
-    e.currentTarget.offsetTop + e.currentTarget.offsetHeight + 'px'; // 탭 아래로 이동
+  const tab = e.currentTarget;
+
+  underLine.style.left = tab.offsetLeft + 'px'; // 탭의 왼쪽 위치
+  underLine.style.width = tab.offsetWidth + 'px'; // 탭의 너비
+  underLine.style.top = tab.offsetTop + tab.offsetHeight + 'px'; // 탭의 아래쪽으로 이동
 }
+
+// 화면 크기 조정 시 탭의 위치 및 밑줄 위치 업데이트
+window.addEventListener('resize', function () {
+  const activeTab = document.querySelector('.filter-nav .ac'); // 활성화된 탭을 찾음
+  if (activeTab) {
+    indicator({ currentTarget: activeTab }); // 활성화된 탭 기준으로 밑줄 위치 업데이트
+  }
+});
 
 // 할 일 추가
 function addTask() {
@@ -125,6 +134,17 @@ function filter(event) {
   render(); // 변경된 모드로 리스트 렌더링
 }
 
+// 탭 활성화 처리
+function activateTab(event) {
+  // 모든 탭에서 'ac' 클래스를 제거
+  tabs.forEach((tab) => {
+    tab.classList.remove('ac');
+  });
+
+  // 클릭한 탭에 'ac' 클래스를 추가
+  event.target.classList.add('ac');
+}
+
 // 랜덤 ID 생성
 function randomIDGenerate() {
   return '_' + Math.random().toString(36).substring(2, 9);
@@ -134,4 +154,15 @@ function randomIDGenerate() {
 window.addEventListener('DOMContentLoaded', function () {
   mode = 'all'; // 기본 모드 'all'로 설정
   render(); // 화면 렌더링
+
+  // 첫 번째 탭을 클릭한 것처럼 동작하게 만들어 underLine 표시
+  const firstTab = document.querySelector('.filter-nav button'); // 첫 번째 탭을 찾음
+  // 처음에 underLine의 width를 0으로 설정하여 안보이게 함
+  underLine.style.width = '0';
+
+  // 첫 번째 탭 클릭 시 indicator 함수와 activateTab 함수 호출
+  setTimeout(() => {
+    indicator({ currentTarget: firstTab }); // 첫 번째 탭에 대한 indicator 함수 실행
+    activateTab({ target: firstTab }); // 첫 번째 탭을 활성화
+  }, 10); // 약간의 지연을 줘서 첫 번째 탭에서 'line'을 확인하게 함
 });
