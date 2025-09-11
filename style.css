@@ -313,6 +313,10 @@ li {
     height: 50vh;
   }
 
+  .add-Btn {
+    height: 46px;
+  }
+
   .add-popup {
     width: 337px;
   }
