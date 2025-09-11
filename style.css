@@ -13,7 +13,6 @@ main {
 }
 
 main h1 {
-  font-family: 'Inter-Semibold', Arial, Helvetica, sans-serif;
   font-weight: 800;
   font-size: 40px;
   color: #792085;
@@ -36,7 +35,6 @@ main h1 {
 .task-input {
   width: 80%;
   height: 42px;
-  font-family: 'Inter-Semibold', Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-style: italic;
   font-size: 16px;
@@ -59,7 +57,6 @@ input::placeholder {
   top: 0;
   right: 0;
   height: 44px;
-  font-family: 'Inter-Semibold', Arial, Helvetica, sans-serif;
   font-weight: 600;
   font-size: 15px;
   color: white;
@@ -102,7 +99,7 @@ input::placeholder {
   background-color: #f3dcff !important;
   margin: 0;
   color: #999999;
-  margin-left: 120px;
+  margin-left: 100px;
   padding: 0;
 }
 
@@ -142,7 +139,6 @@ input::placeholder {
   border-radius: 12px;
   padding: 20px 10px 10px 10px;
   background-color: #fff;
-  font-family: 'Inter-Semibold', Arial, Helvetica, sans-serif;
   font-size: 16px;
   color: #a6a6a6;
   font-weight: 400;
@@ -226,6 +222,6 @@ li {
   }
 
   .add-confirm {
-    margin-left: 90px;
+    margin-left: 75px;
   }
 }
