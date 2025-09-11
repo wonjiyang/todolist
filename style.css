@@ -1,88 +1,6 @@
-/* body {
-  margin: 0;
-  height: 100%;
-  background-color: #efefef;
-}
-
-.container {
-  background-color: #fff;
-  min-height: 100vh;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}
-
-.task-area {
-  border: 1px solid lightblue;
-}
-
-.task-tabs {
-  display: flex;
-  position: relative;
-}
-
-.task-tabs div {
-  padding: 1.5em;
-}
-
-#under-line {
-  height: 4px;
-  background-color: pink;
-  position: absolute;
-  width: 0;
-  left: 0px;
-  top: 0;
-  padding: 0;
-  transition: 0.5s;
-}
-
-.task {
-  display: flex;
-  justify-content: space-between;
-  padding: 1.5em;
-}
-
-.task-done {
-  text-decoration: line-through;
-  background-color: rgb(194, 194, 194);
-  width: 85%;
-}
-
-.task-tabs div {
-  cursor: pointer;
-}
-
-.btn-area {
-  display: flex;
-  justify-content: space-evenly;
-  width: 15%;
-}
-
-.btn-style {
-  border: none;
-  width: 20px;
-  height: 20px;
-}
-
-#add-btn {
-  color: rgb(81, 185, 223);
-}
-
-.click-btn {
-  color: rgb(46, 189, 112);
-}
-
-.delete-btn {
-  color: red;
-}
-
-.rotate-btn {
-  color: #000;
-} */
-
 body {
   background-color: #efefef;
-  display: grid;
+  display: flex;
   justify-content: center;
   align-items: start;
   margin: 0;
@@ -319,11 +237,5 @@ li {
 
   .add-confirm {
     margin-left: 90px;
-  }
-}
-
-@media screen and (max-height: 800px) {
-  .add-Btn {
-    height: 50px;
   }
 }
