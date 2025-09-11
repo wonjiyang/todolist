@@ -57,13 +57,20 @@ input::placeholder {
   top: 0;
   right: 0;
   height: 44px;
-  font-weight: 600;
-  font-size: 15px;
-  color: white;
   background-color: #ebccff;
   border-radius: 20px;
   border: none;
   padding: 0;
+}
+
+.add-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
 }
 
 .add-popup {
@@ -204,7 +211,6 @@ li {
 
 @media screen and (max-width: 900px) {
   main h1 {
-    font-size: 30px;
     margin: 35x;
   }
 
