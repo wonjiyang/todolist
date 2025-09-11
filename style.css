@@ -85,6 +85,7 @@ body {
   display: grid;
   justify-content: center;
   align-items: start;
+  margin: 0;
 }
 
 main {
@@ -124,6 +125,10 @@ main h1 {
   padding-left: 20px;
   border-radius: 20px;
   border: none;
+}
+
+input:focus-visible {
+  outline: none;
 }
 
 input::placeholder {
@@ -216,6 +221,7 @@ input::placeholder {
   left: 0 !important;
   top: 0 !important;
   padding: 0;
+  transition: 0.5s;
 }
 
 .nav-btn {
@@ -259,5 +265,13 @@ input::placeholder {
   .list-box {
     width: 90vw;
     height: 50vh;
+  }
+
+  .add-popup {
+    width: 337px;
+  }
+
+  .add-confirm {
+    margin-left: 90px;
   }
 }
