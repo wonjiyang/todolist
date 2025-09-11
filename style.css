@@ -262,7 +262,7 @@ li {
 }
 
 .task-list {
-  width: 400px;
+  width: 80%;
   word-wrap: break-word; /* 긴 문자열이 자동으로 줄바꿈 되도록 함 */
   overflow-wrap: break-word; /* overflow가 발생할 경우 줄바꿈 */
   white-space: normal;
