@@ -183,8 +183,18 @@ input::placeholder {
   font-size: 15px;
 }
 
-@media (max-width: 900px) {
-  .main h1 {
+@media screen and (max-width: 900px) {
+  main h1 {
     font-size: 30px;
+    margin: 30px;
+  }
+
+  .input-box {
+    width: 90vw;
+  }
+
+  .list-box {
+    width: 90vw;
+    height: 50vh;
   }
 }
