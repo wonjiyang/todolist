@@ -237,7 +237,7 @@ li {
 
 @media screen and (max-width: 900px) {
   main h1 {
-    margin: 35x;
+    margin: 35px;
   }
 
   .input-box {
@@ -246,7 +246,7 @@ li {
 
   .list-box {
     width: 90vw;
-    height: 35vh;
+    height: 40vh;
   }
 
   .add-popup {
