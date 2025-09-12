@@ -29,8 +29,8 @@ main h1 {
   background-color: #ffffff;
   border-radius: 20px;
   border-radius: 20px;
-  /* box-shadow: rgba(160, 160, 160, 0.12) 0px 2px 4px 0px, */
-  /* rgba(160, 160, 160, 0.32) 0px 2px 16px 0px; */
+  box-shadow: rgba(160, 160, 160, 0.12) 0px 2px 4px 0px,
+    rgba(160, 160, 160, 0.32) 0px 2px 16px 0px;
 }
 
 .task-input {
