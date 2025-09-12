@@ -38,7 +38,7 @@ main h1 {
   width: 80%;
   margin: 11px 0;
   font-weight: 400;
-  font-style: italic;
+  /* font-style: italic; */
   font-size: 16px;
   padding-left: 20px;
   border-radius: 20px;
