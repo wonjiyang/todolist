@@ -119,8 +119,11 @@ input::placeholder {
 
 .list-box {
   width: 55vw;
-  height: 40vh;
+  max-height: 40vh;
+  overflow-y: auto;
+  position: relative;
   margin-top: 30px;
+  padding-bottom: 30px;
   background-color: white;
   border-radius: 12px;
   box-shadow: rgba(160, 160, 160, 0.12) 0px 2px 4px 0px,
@@ -131,9 +134,16 @@ input::placeholder {
   display: flex;
   justify-content: flex-start;
   margin-bottom: 20px;
-  position: relative;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
   gap: 20px;
+  z-index: 10;
   padding-left: 10px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
 .line {
@@ -161,6 +171,11 @@ input::placeholder {
 .ac {
   color: #4c4c4c;
   font-weight: 600;
+}
+
+.task-board {
+  max-height: 500px;
+  overflow-y: auto;
 }
 
 .list-content {
@@ -227,7 +242,7 @@ li {
 
   .list-box {
     width: 90vw;
-    height: 50vh;
+    height: 35vh;
   }
 
   .add-popup {
