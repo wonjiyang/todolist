@@ -29,6 +29,8 @@ main h1 {
   width: 55vw;
   height: 43px;
   line-height: 42px;
+  display: flex;
+  justify-content: flex-start;
   background-color: #ffffff;
   border-radius: 20px;
   box-shadow: rgba(160, 160, 160, 0.12) 0px 2px 4px 0px,
@@ -46,7 +48,7 @@ main h1 {
   border: none;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 input:focus-visible {
